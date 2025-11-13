@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bin Sohail - Wholesale Medicine Shop</title>
+    <link rel="stylesheet" href="css/products.css" />
+</head>
+
+<body>
+    <!-- NAVBAR SECTION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- logo area (image + text) -->
+            <div class="nav-logo">
+                <img src="img/logo.png" alt="Bin Sohail Logo" class="logo-img">
+                <div class="logo-text">
+                    <div class="brand">Bin Sohail</div>
+                    <div class="sub">wholesale</div>
+                </div>
+            </div>
+
+            <!-- toggle for mobile -->
+            <div class="nav-toggle" id="navToggle" aria-label="menu">&#9776;</div>
+
+            <!-- desktop nav links -->
+            <ul class="nav-links" id="navMenu ">
+                <li><a href="# ">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Mobile-only menu (slides down) -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact ">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <img src="img/img50.webp" alt="Medicines Banner">
+    </section>
+
+
+
+    <!-- FILTER SECTION -->
+    <!-- <div class="container filters">
+        <div class="filter-box">
+            <input type="text" id="searchInput" placeholder="Search medicine...">
+        </div>
+        <div class="filter-box">
+            <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="tablets">Tablets</option>
+        <option value="syrups">Syrups</option>
+        <option value="drops">Drops</option>
+        <option value="vaccines">Vaccines</option>
+      </select>
+        </div>
+        <div class="filter-box">
+            <select id="priceFilter">
+        <option value="all">All Prices</option>
+        <option value="low">Under Rs.500</option>
+        <option value="medium">Rs.500 - Rs.1000</option>
+        <option value="high">Above Rs.1000</option>
+      </select>
+        </div>
+    </div> -->
+
+    <div class="container filters">
+        <div class="filter-box search-only">
+            <input type="text" id="searchInput" placeholder="Search medicine...">
+            <button class="btn" id="searchButton">Search</button>
+        </div>
+    </div>
+
+
+    <!-- PRODUCTS SECTION -->
+    <section class="products-list container">
+        <h2>All Medicines</h2>
+        <div class="product-grid" id="productGrid">
+
+            <div class="product-card" data-category="tablets" data-price="low">
+                <img src="img/tablet1.jpg" alt="Paracetamol">
+                <h3>Paracetamol</h3>
+                <p>Effective for fever and pain relief.</p>
+                <button class="btn">View Details</button>
+            </div>
+
+            <div class="product-card" data-category="syrups" data-price="medium">
+                <img src="img/syrup1.jpg" alt="Cough Syrup">
+                <h3>Cough Syrup</h3>
+                <p>Relieves cough and sore throat quickly.</p>
+                <button class="btn">View Details</button>
+            </div>
+
+            <div class="product-card" data-category="drops" data-price="low">
+                <img src="img/eye_drops.jpg" alt="Eye Drops">
+                <h3>Eye Drops</h3>
+                <p>Soothes redness and dryness in eyes.</p>
+                <button class="btn">View Details</button>
+            </div>
+
+            <div class="product-card" data-category="vaccines" data-price="high">
+                <img src="img/vaccine.jpg" alt="Flu Vaccine">
+                <h3>Flu Vaccine</h3>
+                <p>Protection against common flu viruses.</p>
+                <button class="btn">View Details</button>
+            </div>
+
+            <div class="product-card" data-category="tablets" data-price="medium">
+                <img src="img/antibiotic.jpg" alt="Antibiotic">
+                <h3>Antibiotic</h3>
+                <p>For bacterial infections and quick recovery.</p>
+                <button class="btn">View Details</button>
+            </div>
+
+            <div class="product-card" data-category="syrups" data-price="high">
+                <img src="img/multivitamin.jpg" alt="Multivitamin Syrup">
+                <h3>Multivitamin Syrup</h3>
+                <p>Boosts energy and strengthens immunity.</p>
+                <button class="btn">View Details</button>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        // SIMPLE FILTER SCRIPT
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const priceFilter = document.getElementById('priceFilter');
+        const productGrid = document.getElementById('productGrid');
+        const products = productGrid.querySelectorAll('.product-card');
+
+        function filterProducts() {
+            const searchValue = searchInput.value.toLowerCase();
+            const categoryValue = categoryFilter.value;
+            const priceValue = priceFilter.value;
+
+            products.forEach(product => {
+                const name = product.querySelector('h3').textContent.toLowerCase();
+                const category = product.dataset.category;
+                const price = product.dataset.price;
+
+                const matchesSearch = name.includes(searchValue);
+                const matchesCategory = categoryValue === 'all' || category === categoryValue;
+                const matchesPrice = priceValue === 'all' || price === priceValue;
+
+                if (matchesSearch && matchesCategory && matchesPrice) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', filterProducts);
+        categoryFilter.addEventListener('change', filterProducts);
+        priceFilter.addEventListener('change', filterProducts);
+    </script>
+
+
+
+    <footer class="footer">
+        <p>© 2025 Bin Sohail Wholesale Medicine Shop. All Rights Reserved.</p>
+    </footer>
+
+    <!-- load JS -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>

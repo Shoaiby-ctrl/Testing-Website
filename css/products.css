@@ -1,0 +1,394 @@
+/* ==========================
+   RESET
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f6f8fa;
+    color: #222;
+}
+
+
+/* ==========================
+   NAVBAR
+========================== */
+
+.navbar {
+    width: 100%;
+    background: #008f4c;
+    color: #fff;
+    padding: 16px 24px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+
+/* logo area */
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.logo-text .brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.logo-text .sub {
+    font-size: 0.85rem;
+    text-transform: lowercase;
+    opacity: 0.9;
+}
+
+
+/* nav links (desktop) */
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 22px;
+    align-items: center;
+    margin-left: auto;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 6px;
+    display: inline-block;
+}
+
+
+/* mobile toggle button */
+
+.nav-toggle {
+    display: none;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/* mobile menu panel */
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: #008f4c;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mobile-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 0;
+}
+
+
+/* ==========================
+     PAGE HEADER
+  ========================== */
+
+.page-header {
+    width: 100%;
+    overflow: hidden;
+}
+
+.page-header img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+}
+
+
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+    .page-header img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header img {
+        margin-top: 10px;
+        height: 150px;
+    }
+}
+
+
+/* ==========================
+   SEARCH BAR STYLING
+========================== */
+
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    flex-wrap: wrap;
+}
+
+.filter-box.search-only {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-box.search-only input {
+    padding: 10px 15px;
+    width: 280px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.filter-box.search-only input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+.filter-box.search-only .btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.filter-box.search-only .btn:hover {
+    background-color: #0056b3;
+}
+
+
+/* Responsive */
+
+@media (max-width: 480px) {
+    .filter-box.search-only {
+        flex-direction: column;
+        width: 100%;
+    }
+    .filter-box.search-only input {
+        width: 90%;
+    }
+}
+
+
+/* .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+} */
+
+
+/* ==========================
+     PRODUCTS LIST SECTION
+  ========================== */
+
+.products-list {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.products-list h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 1.2rem;
+    color: #008f4c;
+    margin-bottom: 5px;
+}
+
+.product-card p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    background: #008f4c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #006f3a;
+}
+
+
+/* footer */
+
+.footer {
+    background: #008f4c;
+    color: #fff;
+    padding: 18px;
+    text-align: center;
+    margin-top: 36px;
+}
+
+
+/* ==========================
+     RESPONSIVENESS
+  ========================== */
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: 60px 20px;
+    }
+    .page-header h2 {
+        font-size: 2rem;
+    }
+    .page-header p {
+        font-size: 1rem;
+    }
+    .filter-box input,
+    .filter-box select {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    .nav-toggle,
+    .nav-toggle {
+        display: block;
+    }
+    /* keep toggle visible if used */
+    .nav-toggle {
+        display: none;
+    }
+    /* hide the character if we use nav-toggle id; we manage mobile via #navToggle in JS*/
+    .nav-toggle {
+        display: block;
+    }
+    /* ensure toggle available */
+    .nav-container {
+        padding: 0 16px;
+    }
+    .logo-img {
+        height: 46px;
+    }
+    .logo-text .brand {
+        font-size: 1rem;
+    }
+    .logo-text .sub {
+        font-size: 0.78rem;
+    }
+    .slide-caption {
+        padding: 8px 10px;
+        max-width: 92%;
+    }
+    .slide-caption h2 {
+        font-size: 1.45rem;
+    }
+    .slide-caption p {
+        font-size: 0.95rem;
+    }
+    .slider-inner {
+        height: 52vh;
+        min-height: 240px;
+    }
+    .slide img {
+        height: 52vh;
+        object-fit: cover;
+    }
+}
+
+
+/* small screens */
+
+@media (max-width: 420px) {
+    .logo-img {
+        height: 40px;
+    }
+    .slide-caption h2 {
+        font-size: 1.2rem;
+    }
+    .slide-caption p {
+        font-size: 0.9rem;
+    }
+}
