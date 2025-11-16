@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bin Sohail - Wholesale Medicine Shop</title>
+    <link rel="stylesheet" href="css/product_detail.css" />
+</head>
+
+<body>
+    <div class="main-content">
+        <!-- NAVBAR SECTION -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- logo area (image + text) -->
+                <div class="nav-logo">
+                    <img src="img/logo.png" alt="Bin Sohail Logo" class="logo-img">
+                    <div class="logo-text">
+                        <div class="brand">Bin Sohail</div>
+                        <div class="sub">wholesale</div>
+                    </div>
+                </div>
+
+                <!-- toggle for mobile -->
+                <div class="nav-toggle" id="navToggle" aria-label="menu">&#9776;</div>
+
+                <!-- desktop nav links -->
+                <ul class="nav-links" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Mobile-only menu (slides down) -->
+        <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="#contact ">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- PAGE HEADER -->
+        <section class="page-header">
+            <img src="img/img61.webp" alt="Medicines Banner">
+        </section>
+
+
+        <!-- PRODUCT DETAILS PAGE -->
+
+        <!-- PRODUCT DETAIL PAGE -->
+        <section class="product-detail">
+
+            <!-- TOP SECTION -->
+            <div class="product-detail-top">
+
+                <!-- LEFT SIDE IMAGES -->
+                <div class="product-images">
+                    <img id="mainImage" src="images/product1.jpg" alt="">
+
+                    <div class="image-thumbs">
+                        <img src="img/img32.avif" onclick="changeImage(this)">
+                        <img src="img/img41.jfif" onclick="changeImage(this)">
+                        <img src="img/img42.avif" onclick="changeImage(this)">
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE PRODUCT INFO -->
+                <div class="product-info">
+                    <h1 class="product-title">Premium Smart Watch</h1>
+                    <p class="product-price">$199</p>
+
+                    <p class="product-desc">
+                        A high-performance smartwatch with health monitoring, GPS tracking, water resistance and 7-day battery life.
+                    </p>
+
+                    <div class="quantity-box">
+                        <label>Quantity:</label>
+                        <input type="number" min="1" value="1">
+                    </div>
+
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+
+            </div>
+
+            <!-- EXTRA INFO TABS -->
+            <div class="product-tabs">
+                <button class="tab active" onclick="openTab(event, 'description')">Description</button>
+                <button class="tab" onclick="openTab(event, 'specs')">Specifications</button>
+                <button class="tab" onclick="openTab(event, 'reviews')">Reviews</button>
+            </div>
+
+            <div id="description" class="tab-content active">
+                <p>This smartwatch offers step tracking, sleep monitoring, heart rate, and more.</p>
+            </div>
+
+            <div id="specs" class="tab-content">
+                <ul>
+                    <li>Battery life: 7 days</li>
+                    <li>Waterproof: Yes</li>
+                    <li>Bluetooth: 5.0</li>
+                </ul>
+            </div>
+
+            <div id="reviews" class="tab-content">
+                <p>No reviews yet.</p>
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <footer class="footer">
+        <p>© 2025 Bin Sohail Wholesale Medicine Shop. All Rights Reserved.</p>
+    </footer>
+
+    <!-- load JS -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>

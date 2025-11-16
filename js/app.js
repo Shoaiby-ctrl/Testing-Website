@@ -89,3 +89,43 @@ document.addEventListener("DOMContentLoaded", function() {
         slider.addEventListener("mouseleave", () => startAuto());
     }
 });
+
+
+
+
+// SIMPLE SEARCH FILTER SCRIPT
+
+
+const searchInput = document.getElementById('searchInput');
+const productGrid = document.getElementById('productGrid');
+const products = productGrid.querySelectorAll('.product-card');
+
+function filterProducts() {
+    const searchValue = searchInput.value.toLowerCase();
+
+    products.forEach(product => {
+        const name = product.querySelector('h3').textContent.toLowerCase();
+        const matchesSearch = name.includes(searchValue);
+
+        product.style.display = matchesSearch ? 'block' : 'none';
+    });
+}
+
+document.getElementById("searchButton").addEventListener("click", filterProducts);
+searchInput.addEventListener("input", filterProducts);
+
+
+
+//product Detail
+
+function changeImage(img) {
+    document.getElementById("mainImage").src = img.src;
+}
+
+function openTab(event, tabID) {
+    document.querySelectorAll(".tab").forEach(btn => btn.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
+
+    event.currentTarget.classList.add("active");
+    document.getElementById(tabID).classList.add("active");
+}
