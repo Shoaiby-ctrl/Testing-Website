@@ -1,4 +1,5 @@
 // js/app.js
+const DISCOUNT_PERCENT = 10;
 document.addEventListener("DOMContentLoaded", function() {
     // NAVBAR toggle (mobile)
     const navToggle = document.getElementById("navToggle");
@@ -128,4 +129,60 @@ function openTab(event, tabID) {
 
     event.currentTarget.classList.add("active");
     document.getElementById(tabID).classList.add("active");
+}
+
+//add-to-cart
+
+
+
+// change quantity ( + / - )
+function updateQuantity(btn, change) {
+    const row = btn.closest("tr");
+    const input = row.querySelector("input");
+    let value = parseInt(input.value) + change;
+
+    if (value < 1) value = 1;
+    input.value = value;
+
+    updateRowSubtotal(row);
+}
+
+// manual input change
+function manualQuantityChange(input) {
+    if (input.value < 1) input.value = 1;
+
+    const row = input.closest("tr");
+    updateRowSubtotal(row);
+}
+
+// remove row
+function removeItem(btn) {
+    btn.closest("tr").remove();
+    updateSummary();
+}
+
+// update single row subtotal
+function updateRowSubtotal(row) {
+    const price = parseFloat(row.querySelector(".price").innerText.replace("$", ""));
+    const qty = parseInt(row.querySelector("input").value);
+
+    row.querySelector(".subtotal").innerText = "$" + (price * qty);
+
+    updateSummary();
+}
+
+// update summary section
+function updateSummary() {
+    let subtotal = 0;
+
+    document.querySelectorAll(".subtotal").forEach(s => {
+        subtotal += parseFloat(s.innerText.replace("$", ""));
+    });
+
+    const discount = (subtotal * DISCOUNT_PERCENT) / 100;
+    const total = subtotal - discount;
+
+    document.getElementById("summarySubtotal").innerText = "$" + subtotal.toFixed(2);
+    document.getElementById("summaryDiscount").innerText = "-$" + discount.toFixed(2);
+    document.getElementById("summaryTotal").innerText = "$" + total.toFixed(2);
 }

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bin Sohail - Wholesale Medicine Shop</title>
+    <link rel="stylesheet" href="css/add_cart.css" />
+</head>
+
+<body>
+    <div class="main-content">
+        <!-- NAVBAR SECTION -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- logo area (image + text) -->
+                <div class="nav-logo">
+                    <img src="img/logo.png" alt="Bin Sohail Logo" class="logo-img">
+                    <div class="logo-text">
+                        <div class="brand">Bin Sohail</div>
+                        <div class="sub">wholesale</div>
+                    </div>
+                </div>
+
+                <!-- toggle for mobile -->
+                <div class="nav-toggle" id="navToggle" aria-label="menu">&#9776;</div>
+
+                <!-- desktop nav links -->
+                <ul class="nav-links" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Mobile-only menu (slides down) -->
+        <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="#contact ">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- PAGE HEADER -->
+        <section class="page-header">
+            <img src="img/img70.webp" alt="Medicines Banner">
+        </section>
+
+
+        <!-- CART PAGE -->
+        <!-- CART PAGE -->
+        <section class="cart-page">
+
+            <h1 class="cart-heading">Your Cart</h1>
+
+            <div class="cart-container">
+
+                <!-- LEFT: CART TABLE -->
+                <div class="cart-items">
+
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Subtotal</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <!-- ITEM 1 -->
+                            <tr class="cart-row">
+                                <td class="product-info">
+                                    <img src="img/img5.jpg" class="prod-img">
+                                    <span>Medicine A</span>
+                                </td>
+                                <td class="price">$100</td>
+                                <td>
+                                    <div class="qty-box">
+                                        <button onclick="updateQuantity(this, -1)">−</button>
+                                        <input type="number" value="1" min="1" oninput="manualQuantityChange(this)">
+                                        <button onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                </td>
+                                <td class="subtotal">$100</td>
+                                <td><button class="remove-btn" onclick="removeItem(this)">X</button></td>
+                            </tr>
+
+                            <!-- ITEM 2 -->
+                            <tr class="cart-row">
+                                <td class="product-info">
+                                    <img src="img/img3.jpg" class="prod-img">
+                                    <span>Medicine B</span>
+                                </td>
+                                <td class="price">$200</td>
+                                <td>
+                                    <div class="qty-box">
+                                        <button onclick="updateQuantity(this, -1)">−</button>
+                                        <input type="number" value="1" min="1" oninput="manualQuantityChange(this)">
+                                        <button onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                </td>
+                                <td class="subtotal">$200</td>
+                                <td><button class="remove-btn" onclick="removeItem(this)">X</button></td>
+                            </tr>
+
+                            <!-- ITEM 3 -->
+                            <tr class="cart-row">
+                                <td class="product-info">
+                                    <img src="img/img50.webp" class="prod-img">
+                                    <span>Medicine C</span>
+                                </td>
+                                <td class="price">$150</td>
+                                <td>
+                                    <div class="qty-box">
+                                        <button onclick="updateQuantity(this, -1)">−</button>
+                                        <input type="number" value="1" min="1" oninput="manualQuantityChange(this)">
+                                        <button onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                </td>
+                                <td class="subtotal">$150</td>
+                                <td><button class="remove-btn" onclick="removeItem(this)">X</button></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <!-- RIGHT SUMMARY -->
+                <div class="cart-summary">
+                    <h3>Order Summary</h3>
+
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="summarySubtotal">$450</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Discount (10%):</span>
+                        <span id="summaryDiscount">-$45</span>
+                    </div>
+
+                    <div class="summary-total">
+                        <span>Total:</span>
+                        <span id="summaryTotal">$405</span>
+                    </div>
+
+                    <button class="checkout-btn">Proceed to Checkout</button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+    </div>
+
+
+    <footer class="footer">
+        <p>© 2025 Bin Sohail Wholesale Medicine Shop. All Rights Reserved.</p>
+    </footer>
+
+    <!-- load JS -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>
