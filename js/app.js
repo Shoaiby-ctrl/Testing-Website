@@ -186,3 +186,20 @@ function updateSummary() {
     document.getElementById("summaryDiscount").innerText = "-$" + discount.toFixed(2);
     document.getElementById("summaryTotal").innerText = "$" + total.toFixed(2);
 }
+
+// checkout
+document.querySelector(".place-order-btn").addEventListener("click", function() {
+    alert("Your order has been placed successfully!");
+});
+// Order Confirm
+// Generate order date (today)
+document.getElementById("orderDate").innerText =
+    new Date().toLocaleDateString("en-US");
+
+// Example total (you can pass real value from checkout page)
+let finalTotal = localStorage.getItem("finalTotal") || "0.00";
+document.getElementById("orderTotal").innerText = "$" + finalTotal;
+
+// Generate random order ID
+document.getElementById("orderID").innerText =
+    "#" + Math.floor(10000 + Math.random() * 90000);
