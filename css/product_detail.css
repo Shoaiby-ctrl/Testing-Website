@@ -94,6 +94,11 @@
         padding: 8px 6px;
         display: inline-block;
     }
+    
+    .nav-links li a:hover {
+        color: black;
+        text-decoration: underline;
+    }
     /* mobile toggle button */
     
     .nav-toggle {

@@ -201,5 +201,98 @@ let finalTotal = localStorage.getItem("finalTotal") || "0.00";
 document.getElementById("orderTotal").innerText = "$" + finalTotal;
 
 // Generate random order ID
-document.getElementById("orderID").innerText =
-    "#" + Math.floor(10000 + Math.random() * 90000);
+document.getElementById("orderID").innerText = "#" + Math.floor(10000 + Math.random() * 90000);
+
+
+// SIGNUP PAGE VALIDATION
+document.getElementById("signupForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("fullName");
+    const email = document.getElementById("email");
+    const pass = document.getElementById("password");
+    const cpass = document.getElementById("confirmPassword");
+
+    let isValid = true;
+
+    // reset errors
+    document.querySelectorAll(".error").forEach(el => el.innerText = "");
+
+    if (name.value.trim() === "") {
+        name.nextElementSibling.innerText = "Full name is required";
+        isValid = false;
+    }
+
+    if (email.value.trim() === "") {
+        email.nextElementSibling.innerText = "Email is required";
+        isValid = false;
+    } else if (!email.value.includes("@")) {
+        email.nextElementSibling.innerText = "Invalid email";
+        isValid = false;
+    }
+
+    if (pass.value.trim().length < 6) {
+        pass.nextElementSibling.innerText = "Minimum 6 characters required";
+        isValid = false;
+    }
+
+    if (cpass.value !== pass.value) {
+        cpass.nextElementSibling.innerText = "Passwords do not match";
+        isValid = false;
+    }
+
+    if (isValid) {
+        alert("Account created successfully!");
+        window.location.href = "login.html";
+    }
+});
+
+// LOGIN PAGE VALIDATION
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById("loginEmail");
+    const pass = document.getElementById("loginPassword");
+
+    let isValid = true;
+
+    // reset errors
+    document.querySelectorAll(".error").forEach(el => el.innerText = "");
+
+    if (email.value.trim() === "") {
+        email.nextElementSibling.innerText = "Email is required";
+        isValid = false;
+    }
+
+    if (pass.value.trim() === "") {
+        pass.nextElementSibling.innerText = "Password is required";
+        isValid = false;
+    }
+
+    if (isValid) {
+        alert("Login successful!");
+        window.location.href = "index.html"; // redirect to homepage
+    }
+});
+
+
+// FORGOT PASSWORD VALIDATION
+document.getElementById("forgotForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById("forgotEmail");
+    let isValid = true;
+
+    // reset error
+    document.querySelectorAll(".error").forEach(el => el.innerText = "");
+
+    if (email.value.trim() === "") {
+        email.nextElementSibling.innerText = "Email is required";
+        isValid = false;
+    }
+
+    if (isValid) {
+        alert("Password reset link sent to your email!");
+        window.location.href = "login.html";
+    }
+});

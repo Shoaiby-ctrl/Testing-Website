@@ -104,6 +104,11 @@ body {
     display: inline-block;
 }
 
+.nav-links li a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
 
 /* mobile toggle button */
 

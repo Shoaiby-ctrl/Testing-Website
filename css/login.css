@@ -169,128 +169,77 @@ NAVBAR
 }
 
 
-/*checkout*/
+/* LOGIN SECTION */
 
-
-/* CONTAINER */
-
-.checkout-page {
-    width: 90%;
-    max-width: 1200px;
-    margin: 40px auto;
-}
-
-.checkout-title {
-    font-size: 34px;
-    margin-bottom: 25px;
-}
-
-
-/* MAIN LAYOUT */
-
-.checkout-container {
+.login-section {
+    padding: 60px 20px;
     display: flex;
-    gap: 40px;
+    justify-content: center;
+    align-items: center;
 }
 
-.checkout-left {
-    width: 65%;
-}
-
-.checkout-right {
-    width: 35%;
-}
-
-
-/* FORM BOXES */
-
-.checkout-box {
-    background: #fafafa;
-    padding: 20px;
+.login-box {
+    width: 100%;
+    max-width: 450px;
+    background: #fff;
+    padding: 35px 30px;
     border-radius: 12px;
-    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.checkout-box h2 {
-    margin-bottom: 15px;
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 10px;
 }
 
+.login-subtitle {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #555;
+}
 
-/* INPUT */
+.form-group {
+    margin-bottom: 18px;
+}
 
-.checkout-box input {
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-group input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 14px;
-    font-size: 16px;
+    border-radius: 6px;
+    font-size: 15px;
 }
 
-
-/* PAYMENT OPTIONS */
-
-.payment-option {
+.error {
+    color: red;
+    font-size: 13px;
+    margin-top: 3px;
     display: block;
-    margin-bottom: 12px;
-    font-size: 16px;
 }
 
-
-/* SUMMARY BOX */
-
-.summary-box {
-    background: #f0f0f0;
-    padding: 20px;
-    border-radius: 12px;
-}
-
-.summary-box h2 {
-    margin-bottom: 20px;
-}
-
-.summary-row,
-.summary-total {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 14px;
-}
-
-.summary-total {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-
-/* BUTTON */
-
-.place-order-btn {
-    width: 100%;
-    padding: 14px;
-    background: #008f4c;
+.login-btn {
     color: white;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
-    margin-top: 20px;
-    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    background-color: #008f4c;
+    width: 100%;
+    margin-top: 10px;
 }
 
-.place-order-btn:hover {
-    background: #006b39;
+.login-footer {
+    text-align: center;
+    margin-top: 12px;
 }
 
-
-/* RESPONSIVE */
-
-@media (max-width: 768px) {
-    .checkout-container {
-        flex-direction: column;
-    }
-    .checkout-left,
-    .checkout-right {
-        width: 100%;
-    }
+.login-footer a {
+    color: #007bff;
+    font-weight: 600;
 }
 
 
