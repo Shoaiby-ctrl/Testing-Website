@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bin Sohail - Wholesale Medicine Shop</title>
+    <link rel="stylesheet" href="css/chatbot.css" />
+</head>
+
+<body>
+    <div class="main-content">
+        <!-- NAVBAR SECTION -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- logo area (image + text) -->
+                <div class="nav-logo">
+                    <img src="img/logo.png" alt="Bin Sohail Logo" class="logo-img">
+                    <div class="logo-text">
+                        <div class="brand">Bin Sohail</div>
+                        <div class="sub">wholesale</div>
+                    </div>
+                </div>
+
+                <!-- toggle for mobile -->
+                <div class="nav-toggle" id="navToggle" aria-label="menu">&#9776;</div>
+
+                <!-- desktop nav links -->
+                <ul class="nav-links" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="contact-us.html">Contact</a></li>
+                    <li><a href="signup.html">Signup</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Mobile-only menu (slides down) -->
+        <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="contact-us.html">Contact</a></li>
+                <li><a href="signup.html">Signup</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+
+        <!-- PAGE HEADER -->
+        <section class="page-header">
+            <img src="img/img116.png" alt="Medicines Banner">
+        </section>
+
+        <!-- chatbot -->
+        <!-- Chatbot Hero Section -->
+        <section class="chatbot-hero">
+            <div class="hero-left">
+                <h1>Need Help With Medicines?</h1>
+                <p class="subtitle">Meet your Smart Medical Assistant</p>
+
+                <p class="typing-text"></p>
+
+                <ul class="help-list">
+                    <li>✔ What is this medicine used for?</li>
+                    <li>✔ Side effects & warnings</li>
+                    <li>✔ Recommended dosage</li>
+                    <li>✔ Medicine interactions</li>
+                </ul>
+            </div>
+
+            <div class="hero-right">
+                <img src="img/img110.jpg" alt="doctor">
+            </div>
+        </section>
+
+        <!-- Chatbot Welcome Popup -->
+        <div class="chatbot-welcome" id="chatPopup">
+            👋 Hi! Need any help? Ask me about any medicine.
+        </div>
+
+        <!-- CHATBOT WIDGET -->
+        <div class="chatbot-container">
+
+            <!-- Floating Button -->
+            <button id="chatbotToggle" class="chatbot-btn">
+        💬
+    </button>
+
+            <!-- Chat Window -->
+            <div class="chatbot-box" id="chatbotBox">
+                <div class="chatbot-header">
+                    <h3>Medicine Assistant</h3>
+                    <button id="chatbotClose">×</button>
+                </div>
+
+                <div class="chatbot-body" id="chatbotMessages">
+                    <div class="bot-msg">Hello! Ask me anything about medicines.</div>
+                </div>
+
+                <div class="chatbot-input-area">
+                    <input type="text" id="chatInput" placeholder="Ask about medicines...">
+                    <button id="sendBtn">➤</button>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 Bin Sohail Wholesale Medicine Shop. All Rights Reserved.</p>
+    </footer>
+
+    <!-- load JS -->
+    <script>
+        // Typing animation text
+        const text = "Ask me anything about your medicine...";
+        const typingElement = document.querySelector(".typing-text");
+        let index = 0;
+
+        function typeEffect() {
+            if (index < text.length) {
+                typingElement.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeEffect, 70);
+            }
+        }
+        typeEffect();
+
+        // Show chatbot welcome popup
+        setTimeout(() => {
+            document.getElementById("chatPopup").style.display = "block";
+        }, 1500);
+
+        // Close popup when user clicks chat button
+        document.querySelector(".chatbot-btn").addEventListener("click", () => {
+            document.getElementById("chatPopup").style.display = "none";
+        });
+
+        const toggleBtn = document.getElementById("chatbotToggle");
+        const chatBox = document.getElementById("chatbotBox");
+        const closeBtn = document.getElementById("chatbotClose");
+
+        toggleBtn.addEventListener("click", () => {
+            chatBox.style.display = "flex";
+        });
+
+        closeBtn.addEventListener("click", () => {
+            chatBox.style.display = "none";
+        });
+
+
+        // SEND MESSAGE
+        document.getElementById("sendBtn").addEventListener("click", sendMessage);
+        document.getElementById("chatInput").addEventListener("keypress", (e) => {
+            if (e.key === "Enter") sendMessage();
+        });
+
+        function sendMessage() {
+            let input = document.getElementById("chatInput");
+            let text = input.value.trim();
+            if (!text) return;
+
+            addUserMessage(text);
+            input.value = "";
+
+            setTimeout(() => {
+                botReply(text);
+            }, 600);
+        }
+
+
+        // ADD USER MESSAGE
+        function addUserMessage(msg) {
+            let box = document.getElementById("chatbotMessages");
+            box.innerHTML += `<div class="user-msg">${msg}</div>`;
+            box.scrollTop = box.scrollHeight;
+        }
+
+
+        // BOT REPLY (Temporary Logic)
+        function botReply(question) {
+            let box = document.getElementById("chatbotMessages");
+
+            let lower = question.toLowerCase();
+            let reply = "I'm not sure, but I will help you soon.";
+
+            if (lower.includes("paracetamol")) reply = "Paracetamol is used for fever and pain relief.";
+            if (lower.includes("aspirin")) reply = "Aspirin helps with inflammation and blood thinning.";
+            if (lower.includes("antibiotic")) reply = "Antibiotics fight bacterial infections.";
+            if (lower.includes("dose")) reply = "Doses depend on age, weight, and prescription.";
+
+            // Later you will replace this with Laravel API
+            // /api/chatbot?message=...
+
+            box.innerHTML += `<div class="bot-msg">${reply}</div>`;
+            box.scrollTop = box.scrollHeight;
+        }
+    </script>
+</body>
+
+</html>

@@ -296,3 +296,65 @@ document.getElementById("forgotForm").addEventListener("submit", function(e) {
         window.location.href = "login.html";
     }
 });
+
+// chatbot
+// OPEN & CLOSE CHATBOT
+// const toggleBtn = document.getElementById("chatbotToggle");
+// const chatBox = document.getElementById("chatbotBox");
+// const closeBtn = document.getElementById("chatbotClose");
+
+// toggleBtn.addEventListener("click", () => {
+//     chatBox.style.display = "flex";
+// });
+
+// closeBtn.addEventListener("click", () => {
+//     chatBox.style.display = "none";
+// });
+
+
+// // SEND MESSAGE
+// document.getElementById("sendBtn").addEventListener("click", sendMessage);
+// document.getElementById("chatInput").addEventListener("keypress", (e) => {
+//     if (e.key === "Enter") sendMessage();
+// });
+
+// function sendMessage() {
+//     let input = document.getElementById("chatInput");
+//     let text = input.value.trim();
+//     if (!text) return;
+
+//     addUserMessage(text);
+//     input.value = "";
+
+//     setTimeout(() => {
+//         botReply(text);
+//     }, 600);
+// }
+
+
+// // ADD USER MESSAGE
+// function addUserMessage(msg) {
+//     let box = document.getElementById("chatbotMessages");
+//     box.innerHTML += `<div class="user-msg">${msg}</div>`;
+//     box.scrollTop = box.scrollHeight;
+// }
+
+
+// // BOT REPLY (Temporary Logic)
+// function botReply(question) {
+//     let box = document.getElementById("chatbotMessages");
+
+//     let lower = question.toLowerCase();
+//     let reply = "I'm not sure, but I will help you soon.";
+
+//     if (lower.includes("paracetamol")) reply = "Paracetamol is used for fever and pain relief.";
+//     if (lower.includes("aspirin")) reply = "Aspirin helps with inflammation and blood thinning.";
+//     if (lower.includes("antibiotic")) reply = "Antibiotics fight bacterial infections.";
+//     if (lower.includes("dose")) reply = "Doses depend on age, weight, and prescription.";
+
+//     // Later you will replace this with Laravel API
+//     // /api/chatbot?message=...
+
+//     box.innerHTML += `<div class="bot-msg">${reply}</div>`;
+//     box.scrollTop = box.scrollHeight;
+//}
