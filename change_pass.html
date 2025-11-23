@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bin Sohail - Wholesale Medicine Shop</title>
-    <link rel="stylesheet" href="css/order_confirm.css" />
+    <link rel="stylesheet" href="css/chnage_pass.css" />
 </head>
 
 <body>
@@ -63,31 +63,49 @@
 
         <!-- PAGE HEADER -->
         <section class="page-header">
-            <img src="img/img87.jpg" alt="Medicines Banner">
+            <img src="img/img99.jpg" alt="Medicines Banner">
         </section>
 
 
-        <!-- ORDER CONFIRMATION SECTION -->
-        <section class="order-confirm">
-            <div class="confirm-box">
+        <!-- MY ORDERS SECTION -->
 
-                <div class="icon-circle">
-                    ✓
+        <!-- CHANGE PASSWORD SECTION -->
+        <section class="change-pass-section">
+            <h2>Change Password</h2>
+
+            <div class="change-pass-box">
+
+                <!-- Current Password -->
+                <label>Current Password</label>
+                <input type="password" id="currentPass" placeholder="Enter current password">
+
+                <!-- New Password -->
+                <label>New Password</label>
+                <input type="password" id="newPass" oninput="checkStrength()" placeholder="Enter new password">
+
+                <!-- Password Strength Meter -->
+                <div class="strength-meter">
+                    <div id="strengthBar"></div>
                 </div>
+                <p id="strengthText" class="strength-text">Strength: —</p>
 
-                <h2>Order Placed Successfully!</h2>
-                <p>Thank you for your purchase. Your order has been confirmed.</p>
+                <!-- Requirements -->
+                <ul class="requirements">
+                    <li id="reqLength">✖ At least 8 characters</li>
+                    <li id="reqUpper">✖ 1 uppercase letter</li>
+                    <li id="reqNumber">✖ 1 number</li>
+                </ul>
 
-                <div class="order-info">
-                    <p><strong>Order ID:</strong> <span id="orderID">#25478</span></p>
-                    <p><strong>Date:</strong> <span id="orderDate"></span></p>
-                    <p><strong>Total Amount:</strong> <span id="orderTotal">$0.00</span></p>
-                </div>
+                <!-- Confirm New Password -->
+                <label>Confirm New Password</label>
+                <input type="password" id="confirmPass" placeholder="Confirm new password">
 
-                <a href="products.html" class="btn confirm-btn">Continue Shopping</a>
+                <button class="update-btn" onclick="updatePassword()">Update Password</button>
+
+                <!-- Message output -->
+                <p id="passMessage" class="pass-message"></p>
             </div>
         </section>
-
 
 
 
@@ -101,8 +119,82 @@
 
     <!-- load JS -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        //change pass
+        function checkStrength() {
+            const pass = document.getElementById("newPass").value;
 
+            let strength = 0;
+
+            // Requirement 1: Length ≥ 8
+            if (pass.length >= 8) {
+                strength++;
+                document.getElementById("reqLength").classList.add("valid");
+                document.getElementById("reqLength").innerText = "✔ At least 8 characters";
+            } else {
+                document.getElementById("reqLength").classList.remove("valid");
+                document.getElementById("reqLength").innerText = "✖ At least 8 characters";
+            }
+
+            // Requirement 2: Uppercase
+            if (/[A-Z]/.test(pass)) {
+                strength++;
+                document.getElementById("reqUpper").classList.add("valid");
+                document.getElementById("reqUpper").innerText = "✔ 1 uppercase letter";
+            } else {
+                document.getElementById("reqUpper").classList.remove("valid");
+                document.getElementById("reqUpper").innerText = "✖ 1 uppercase letter";
+            }
+
+            // Requirement 3: Number
+            if (/\d/.test(pass)) {
+                strength++;
+                document.getElementById("reqNumber").classList.add("valid");
+                document.getElementById("reqNumber").innerText = "✔ 1 number";
+            } else {
+                document.getElementById("reqNumber").classList.remove("valid");
+                document.getElementById("reqNumber").innerText = "✖ 1 number";
+            }
+
+            // Strength Meter Bar
+            const bar = document.getElementById("strengthBar");
+            const text = document.getElementById("strengthText");
+
+            if (strength === 0) {
+                bar.style.width = "0%";
+                bar.style.background = "red";
+                text.innerText = "Strength: —";
+            } else if (strength === 1) {
+                bar.style.width = "33%";
+                bar.style.background = "red";
+                text.innerText = "Strength: Weak";
+            } else if (strength === 2) {
+                bar.style.width = "66%";
+                bar.style.background = "orange";
+                text.innerText = "Strength: Medium";
+            } else if (strength === 3) {
+                bar.style.width = "100%";
+                bar.style.background = "green";
+                text.innerText = "Strength: Strong";
+            }
+        }
+
+        function updatePassword() {
+            const newPass = document.getElementById("newPass").value;
+            const confirmPass = document.getElementById("confirmPass").value;
+            const msg = document.getElementById("passMessage");
+
+            if (newPass !== confirmPass) {
+                msg.style.color = "red";
+                msg.innerText = "Passwords do not match!";
+                return;
+            }
+
+            msg.style.color = "green";
+            msg.innerText = "Password updated successfully!";
+        }
+
+        // User dropdown
+        document.addEventListener("DOMContentLoaded", function() {
             // 1. Mobile Menu Toggle
             const navToggle = document.getElementById("navToggle");
             const mobileMenu = document.getElementById("mobileMenu");
@@ -155,7 +247,7 @@
                     t.classList.remove("active");
                 });
             });
-        })
+        });
     </script>
 </body>
 

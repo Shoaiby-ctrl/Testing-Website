@@ -112,27 +112,26 @@
     .mobile-menu {
         display: none;
         position: fixed;
-        top: 72px;
+        top: 76px;
+        /* Adjust based on navbar height */
         left: 0;
-        right: 0;
+        width: 100%;
         background: #008f4c;
-        z-index: 999;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        z-index: 9998;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
     
     .mobile-menu ul {
         list-style: none;
-        padding: 12px 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+        padding-bottom: 20px;
     }
     
-    .mobile-menu a {
-        color: #fff;
+    .mobile-menu li a {
+        display: block;
+        padding: 15px 20px;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         text-decoration: none;
-        font-size: 18px;
-        padding: 8px 0;
     }
     /* ==========================
      PAGE HEADER

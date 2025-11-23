@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bin Sohail - Wholesale Medicine Shop</title>
-    <link rel="stylesheet" href="css/chatbot.css" />
+    <link rel="stylesheet" href="css/profile.css" />
 </head>
 
 <body>
@@ -63,65 +63,51 @@
 
         <!-- PAGE HEADER -->
         <section class="page-header">
-            <img src="img/img116.png" alt="Medicines Banner">
+            <img src="img/img99.jpg" alt="Medicines Banner">
         </section>
 
-        <!-- chatbot -->
-        <!-- Chatbot Hero Section -->
-        <section class="chatbot-hero">
-            <div class="hero-left">
-                <h1>Need Help With Medicines?</h1>
-                <p class="subtitle">Meet your Smart Medical Assistant</p>
 
-                <p class="typing-text"></p>
+        <!-- PROFILE SECTION -->
+        <section class="profile-section">
+            <div class="profile-wrapper">
 
-                <ul class="help-list">
-                    <li>✔ What is this medicine used for?</li>
-                    <li>✔ Side effects & warnings</li>
-                    <li>✔ Recommended dosage</li>
-                    <li>✔ Medicine interactions</li>
-                </ul>
-            </div>
+                <!-- LEFT MENU -->
+                <div class="profile-sidebar">
+                    <button class="side-btn active">My Profile</button>
+                    <button class="side-btn">My Orders</button>
+                    <button class="side-btn">Change Password</button>
+                    <!-- <button class="side-btn logout">Logout</button> -->
+                </div>
 
-            <div class="hero-right">
-                <img src="img/img110.jpg" alt="doctor">
+                <!-- RIGHT FORM -->
+                <div class="profile-content">
+                    <h2>Personal Information</h2>
+
+                    <form class="profile-form">
+                        <label>Name</label>
+                        <input type="text" placeholder="Enter your name">
+
+                        <label>Email</label>
+                        <input type="email" placeholder="Enter your email">
+
+                        <label>Phone</label>
+                        <input type="text" placeholder="Enter your phone number">
+
+                        <label>Address</label>
+                        <textarea placeholder="Enter your full address"></textarea>
+
+                        <button type="submit" class="save-btn">Save Changes</button>
+                    </form>
+                </div>
+
             </div>
         </section>
 
-        <!-- Chatbot Welcome Popup -->
-        <div class="chatbot-welcome" id="chatPopup">
-            👋 Hi! Need any help? Ask me about any medicine.
-        </div>
-
-        <!-- CHATBOT WIDGET -->
-        <div class="chatbot-container">
-
-            <!-- Floating Button -->
-            <button id="chatbotToggle" class="chatbot-btn">
-        💬
-    </button>
-
-            <!-- Chat Window -->
-            <div class="chatbot-box" id="chatbotBox">
-                <div class="chatbot-header">
-                    <h3>Medicine Assistant</h3>
-                    <button id="chatbotClose">×</button>
-                </div>
-
-                <div class="chatbot-body" id="chatbotMessages">
-                    <div class="bot-msg">Hello! Ask me anything about medicines.</div>
-                </div>
-
-                <div class="chatbot-input-area">
-                    <input type="text" id="chatInput" placeholder="Ask about medicines...">
-                    <button id="sendBtn">➤</button>
-                </div>
-            </div>
-        </div>
 
 
 
     </div>
+
 
     <footer class="footer">
         <p>© 2025 Bin Sohail Wholesale Medicine Shop. All Rights Reserved.</p>
@@ -129,7 +115,7 @@
 
     <!-- load JS -->
     <script>
-        //navbar
+        // User dropdown
         document.addEventListener("DOMContentLoaded", function() {
 
             // 1. Mobile Menu Toggle
@@ -185,89 +171,6 @@
                 });
             });
         });
-        // Typing animation text
-        const text = "Ask me anything about your medicine...";
-        const typingElement = document.querySelector(".typing-text");
-        let index = 0;
-
-        function typeEffect() {
-            if (index < text.length) {
-                typingElement.textContent += text.charAt(index);
-                index++;
-                setTimeout(typeEffect, 70);
-            }
-        }
-        typeEffect();
-
-        // Show chatbot welcome popup
-        setTimeout(() => {
-            document.getElementById("chatPopup").style.display = "block";
-        }, 1500);
-
-        // Close popup when user clicks chat button
-        document.querySelector(".chatbot-btn").addEventListener("click", () => {
-            document.getElementById("chatPopup").style.display = "none";
-        });
-
-        const toggleBtn = document.getElementById("chatbotToggle");
-        const chatBox = document.getElementById("chatbotBox");
-        const closeBtn = document.getElementById("chatbotClose");
-
-        toggleBtn.addEventListener("click", () => {
-            chatBox.style.display = "flex";
-        });
-
-        closeBtn.addEventListener("click", () => {
-            chatBox.style.display = "none";
-        });
-
-
-        // SEND MESSAGE
-        document.getElementById("sendBtn").addEventListener("click", sendMessage);
-        document.getElementById("chatInput").addEventListener("keypress", (e) => {
-            if (e.key === "Enter") sendMessage();
-        });
-
-        function sendMessage() {
-            let input = document.getElementById("chatInput");
-            let text = input.value.trim();
-            if (!text) return;
-
-            addUserMessage(text);
-            input.value = "";
-
-            setTimeout(() => {
-                botReply(text);
-            }, 600);
-        }
-
-
-        // ADD USER MESSAGE
-        function addUserMessage(msg) {
-            let box = document.getElementById("chatbotMessages");
-            box.innerHTML += `<div class="user-msg">${msg}</div>`;
-            box.scrollTop = box.scrollHeight;
-        }
-
-
-        // BOT REPLY (Temporary Logic)
-        function botReply(question) {
-            let box = document.getElementById("chatbotMessages");
-
-            let lower = question.toLowerCase();
-            let reply = "I'm not sure, but I will help you soon.";
-
-            if (lower.includes("paracetamol")) reply = "Paracetamol is used for fever and pain relief.";
-            if (lower.includes("aspirin")) reply = "Aspirin helps with inflammation and blood thinning.";
-            if (lower.includes("antibiotic")) reply = "Antibiotics fight bacterial infections.";
-            if (lower.includes("dose")) reply = "Doses depend on age, weight, and prescription.";
-
-            // Later you will replace this with Laravel API
-            // /api/chatbot?message=...
-
-            box.innerHTML += `<div class="bot-msg">${reply}</div>`;
-            box.scrollTop = box.scrollHeight;
-        }
     </script>
 </body>
 

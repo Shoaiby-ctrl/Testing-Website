@@ -8,8 +8,10 @@
     box-sizing: border-box;
 }
 
-
-/* Update your body style */
+html,
+body {
+    height: 100%;
+}
 
 body {
     font-family: Arial, sans-serif;
@@ -25,9 +27,6 @@ body {
     /* --- STICKY FOOTER FIX END --- */
 }
 
-
-/* Add this new rule to your CSS file */
-
 .main-content {
     flex-grow: 1;
     /* This pushes the footer down */
@@ -35,8 +34,244 @@ body {
 
 
 /* ==========================
-NAVBAR
+   NAVBAR
 ========================== */
+
+
+/* USER DROPDOWN FIXED */
+
+
+/* Dropdown container */
+
+
+/* =========================================
+   FIXED NAVBAR & DROPDOWN STYLES
+   ========================================= */
+
+
+/* Navbar Positioning */
+
+
+/* ==========================
+   NAVBAR & DROPDOWN FIXES
+========================== */
+
+
+/* Base Navbar Styling */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    background: #008f4c;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 24px;
+    /* Slightly reduced padding for better fit */
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* Nav Links */
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+
+/* ------------------------------------------
+   DESKTOP USER MENU (THE BOX FIX)
+------------------------------------------ */
+
+
+/* The Container */
+
+.desktop-user-menu {
+    position: relative;
+    /* Anchors the absolute dropdown */
+}
+
+
+/* The "Box" Trigger styling */
+
+.desktop-user-menu .user-name-trigger {
+    background: rgba(255, 255, 255, 0.15);
+    /* Semi-transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    /* Visible border */
+    border-radius: 5px;
+    /* Rounded corners */
+    padding: 8px 16px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+
+/* Hover effect for the Trigger Box */
+
+.desktop-user-menu .user-name-trigger:hover,
+.desktop-user-menu .user-name-trigger.active {
+    background: #fff;
+    color: #008f4c;
+    /* Text turns green */
+    border-color: #fff;
+}
+
+
+/* The Dropdown Content Box (Fixing visibility) */
+
+.desktop-user-menu .user-dropdown-content {
+    display: none;
+    /* Hidden by default */
+    position: absolute;
+    top: 120%;
+    /* Pushes it slightly below the button */
+    right: 0;
+    background-color: #ffffff;
+    /* PURE WHITE BACKGROUND */
+    min-width: 180px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Strong shadow for contrast */
+    border-radius: 6px;
+    overflow: hidden;
+    z-index: 10000;
+    border: 1px solid #eee;
+}
+
+
+/* Show class toggled by JS */
+
+.user-dropdown-content.show {
+    display: block;
+}
+
+
+/* Dropdown Links */
+
+.desktop-user-menu .user-dropdown-content a {
+    display: block;
+    padding: 12px 16px;
+    color: #333333 !important;
+    /* DARK TEXT - FORCES VISIBILITY */
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+    background: transparent;
+}
+
+.desktop-user-menu .user-dropdown-content a:hover {
+    background-color: #f8f9fa;
+    color: #008f4c !important;
+    padding-left: 20px;
+    /* Slide effect */
+    transition: 0.2s;
+}
+
+
+/* ------------------------------------------
+   MOBILE RESPONSIVENESS
+------------------------------------------ */
+
+
+/* Mobile Menu Overlay */
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 76px;
+    /* Adjust based on navbar height */
+    left: 0;
+    width: 100%;
+    background: #008f4c;
+    z-index: 9998;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding-bottom: 20px;
+}
+
+.mobile-menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+}
+
+
+/* Mobile User Menu Specifics */
+
+.mobile-user-item .user-name-trigger {
+    padding: 15px 20px;
+    color: white;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+
+/* On mobile, dropdown expands down (static) instead of floating */
+
+.mobile-user-item .user-dropdown-content {
+    display: none;
+    /* Hidden initially */
+    background: #007a41;
+    /* Darker green for mobile dropdown */
+    width: 100%;
+}
+
+.mobile-user-item .user-dropdown-content.show {
+    display: block;
+}
+
+.mobile-user-item .user-dropdown-content a {
+    color: white !important;
+    padding-left: 40px;
+    /* Indent sub-items */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+/* Hide Desktop nav on small screens */
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    .nav-toggle {
+        display: block;
+    }
+}
+
+
+/*navbar*/
 
 .navbar {
     width: 100%;
@@ -123,53 +358,61 @@ NAVBAR
 
 /* mobile menu panel */
 
-.mobile-menu {
+
+/* FIX: Mobile menu should stay hidden until toggle button is clicked */
+
+#mobileMenu {
     display: none;
-    position: fixed;
-    top: 72px;
-    left: 0;
-    right: 0;
-    background: #008f4c;
-    z-index: 999;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-.mobile-menu ul {
-    list-style: none;
-    padding: 12px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+
+/* FIX: Username dropdown hidden by default */
+
+.user-dropdown {
+    display: none;
 }
 
-.mobile-menu a {
-    color: #fff;
+
+/* Username text */
+
+.user-name {
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    padding: 10px 16px;
+}
+
+
+/* Dropdown box */
+
+.user-dropdown-box {
+    background: white;
+    color: #008f4c;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Items inside dropdown */
+
+.user-dropdown-box a {
+    color: #008f4c !important;
     text-decoration: none;
-    font-size: 18px;
+    display: block;
     padding: 8px 0;
+    font-weight: 600;
+}
+
+.user-dropdown-box a:hover {
+    opacity: 0.7;
 }
 
 
 /* ==========================
- PAGE HEADER
+   Order Confirm
 ========================== */
-
-.page-header {
-    width: 100%;
-    overflow: hidden;
-}
-
-.page-header img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    display: block;
-    border-radius: 0;
-    margin-top: 30px;
-}
-
-
-/* ORDER CONFIRMATION */
 
 .order-confirm {
     padding: 60px 20px;
@@ -234,18 +477,56 @@ NAVBAR
 }
 
 
-/* Responsive adjustments */
+/* ==========================
+ PAGE HEADER
+========================== */
 
-@media (max-width: 768px) {
-    .page-header img {
-        height: 200px;
-    }
+.page-header {
+    width: 100%;
+    overflow: hidden;
 }
 
+.page-header img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+    margin-top: 30px;
+}
+
+
+/* VERY SMALL DEVICES FIX (≤480px) */
+
 @media (max-width: 480px) {
+    .cart-container {
+        flex-direction: column;
+    }
+    .cart-items,
+    .cart-summary {
+        width: 100%;
+    }
     .page-header img {
-        margin-top: 15px;
         height: 150px;
+    }
+    .prod-img {
+        width: 38px;
+        height: 38px;
+    }
+    .cart-table th,
+    .cart-table td {
+        padding: 8px;
+        font-size: 13px;
+    }
+    .qty-box input {
+        width: 32px;
+    }
+    .summary-total {
+        font-size: 18px;
+    }
+    .checkout-btn {
+        font-size: 16px;
+        padding: 12px;
     }
 }
 
@@ -262,22 +543,18 @@ NAVBAR
 
 
 /* ==========================
- RESPONSIVENESS
+   RESPONSIVE
 ========================== */
 
-@media (max-width: 768px) {
-    .page-header {
-        padding: 60px 20px;
+@media (max-width: 1024px) {
+    .slide-caption h2 {
+        font-size: 1.9rem;
     }
-    .page-header h2 {
-        font-size: 2rem;
-    }
-    .page-header p {
+    .slide-caption p {
         font-size: 1rem;
     }
-    .filter-box input,
-    .filter-box select {
-        width: 100%;
+    .logo-img {
+        height: 52px;
     }
 }
 
@@ -310,10 +587,111 @@ NAVBAR
     .logo-text .sub {
         font-size: 0.78rem;
     }
+    .slide-caption {
+        padding: 8px 10px;
+        max-width: 92%;
+    }
+    .slide-caption h2 {
+        font-size: 1.45rem;
+    }
+    .slide-caption p {
+        font-size: 0.95rem;
+    }
+    .slider-inner {
+        height: 52vh;
+        min-height: 240px;
+    }
+    .slide img {
+        height: 52vh;
+        object-fit: cover;
+    }
 }
+
+
+/* small screens */
 
 @media (max-width: 420px) {
     .logo-img {
         height: 40px;
+    }
+    .slide-caption h2 {
+        font-size: 1.2rem;
+    }
+    .slide-caption p {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* ==========================
+   MEDIA QUERIES FOR RESPONSIVENESS
+========================== */
+
+@media (max-width: 1024px) {
+    .products h2,
+    .why-choose h2,
+    .testimonials h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-grid,
+    .choose-grid,
+    .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 items per row */
+    }
+    .choose-card img {
+        width: 100px;
+    }
+    .testimonial-card img {
+        width: 70px;
+        height: 70px;
+    }
+    .products h2,
+    .why-choose h2,
+    .testimonials h2 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid,
+    .choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 items per row even on small screens */
+        gap: 15px;
+    }
+    .product-card,
+    .choose-card {
+        padding: 15px;
+        /* Reduce padding to fit 2 cards */
+        max-width: 140px;
+        /* Smaller width to fit side by side */
+    }
+    .product-card img {
+        height: 120px;
+        /* smaller images for small screens */
+    }
+    .choose-card img {
+        width: 80px;
+    }
+    .products h2,
+    .why-choose h2 {
+        font-size: 1.5rem;
+    }
+    .product-card h3,
+    .choose-card h3 {
+        font-size: 1rem;
+        /* smaller headings */
+    }
+    .product-card p,
+    .choose-card p {
+        font-size: 0.85rem;
+        /* smaller text */
+    }
+    .stars {
+        font-size: 1rem;
     }
 }

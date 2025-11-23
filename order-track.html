@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bin Sohail - Wholesale Medicine Shop</title>
+    <link rel="stylesheet" href="css/order-track.css" />
+</head>
+
+<body>
+    <div class="main-content">
+        <!-- NAVBAR SECTION -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="img/logo.png" alt="Bin Sohail Logo" class="logo-img">
+                    <div class="logo-text">
+                        <div class="brand">Bin Sohail</div>
+                        <div class="sub">wholesale</div>
+                    </div>
+                </div>
+
+                <div class="nav-toggle" id="navToggle" aria-label="menu">&#9776;</div>
+
+                <ul class="nav-links" id="navMenu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact-us.html">Contact</a></li>
+                    <li><a href="chatbot.html">Chatbot</a></li>
+
+                    <li class="user-menu-container desktop-user-menu">
+                        <div class="user-name-trigger">
+                            John Doe <span class="arrow">▼</span>
+                        </div>
+                        <div class="user-dropdown-content">
+                            <a href="#">My Profile</a>
+                            <a href="#">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact-us.html">Contact</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+
+                <li class="user-menu-container mobile-user-item">
+                    <div class="user-name-trigger">
+                        John Doe ▼
+                    </div>
+                    <div class="user-dropdown-content">
+                        <a href="#">My Profile</a>
+                        <a href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PAGE HEADER -->
+        <section class="page-header">
+            <img src="img/img99.jpg" alt="Medicines Banner">
+        </section>
+
+
+        <!-- MY ORDERS SECTION -->
+        <!-- ORDER TRACKING SECTION -->
+        <section class="tracking-section">
+            <div class="tracking-wrapper">
+                <!-- LEFT MENU -->
+                <div class="profile-sidebar">
+                    <button class="side-btn active">My Profile</button>
+                    <button class="side-btn">My Orders</button>
+                    <button class="side-btn">Change Password</button>
+                    <!-- <button class="side-btn logout">Logout</button> -->
+                </div>
+
+                <!-- ORDER DETAILS -->
+                <div class="order-details-container">
+                    <div class="order-header">
+                        <h2>Order #10245</h2>
+                        <div class="order-info">
+                            <p><strong>Date:</strong> 22 Nov 2025</p>
+                            <p><strong>Status:</strong> Completed</p>
+                            <p><strong>Payment:</strong> Paid (Credit Card)</p>
+                        </div>
+                    </div>
+
+                    <!-- ITEM 1 -->
+                    <div class="item">
+                        <img src="images/panadol.jpg" alt="Item">
+                        <div class="item-details">
+                            <h4>Panadol</h4>
+                            <p>Qty: 2</p>
+                        </div>
+                        <div class="price">Rs 300</div>
+                        <button class="remove-item" title="Remove Item">&times;</button>
+                    </div>
+
+                    <div class="item">
+                        <img src="images/syrup.jpg" alt="Item">
+                        <div class="item-details">
+                            <h4>Cough</h4>
+                            <p>Qty: 1</p>
+                        </div>
+                        <div class="price">Rs 450</div>
+                        <button class="remove-item" title="Remove Item">&times;</button>
+                    </div>
+
+                    <div class="item">
+                        <img src="images/vitamin.jpg" alt="Item">
+                        <div class="item-details">
+                            <h4>Vitamin</h4>
+                            <p>Qty: 1</p>
+                        </div>
+                        <div class="price">Rs 600</div>
+                        <button class="remove-item" title="Remove Item">&times;</button>
+                    </div>
+
+                    <div class="total-section">
+                        <strong>Total: Rs 1350</strong>
+                        <br> <button class="cancel-order-btn">Cancel Entire Order</button>
+                    </div>
+
+
+                </div>
+
+        </section>
+
+
+
+
+
+        </div>
+
+
+        <footer class="footer">
+            <p>© 2025 Bin Sohail Wholesale Medicine Shop. All Rights Reserved.</p>
+        </footer>
+
+        <!-- load JS -->
+        <script>
+            // ADD THIS NEW SCRIPT FOR REMOVING ITEMS
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Find the parent .item div
+                    const itemRow = this.closest('.item');
+
+                    // Add a fade-out effect (optional)
+                    itemRow.style.opacity = '0';
+                    itemRow.style.transition = 'opacity 0.5s';
+
+                    // Remove it after the fade
+                    setTimeout(() => {
+                        itemRow.remove();
+                    }, 500);
+                });
+            });
+            // User dropdown
+            document.addEventListener("DOMContentLoaded", function() {
+
+                // 1. Mobile Menu Toggle
+                const navToggle = document.getElementById("navToggle");
+                const mobileMenu = document.getElementById("mobileMenu");
+
+                if (navToggle && mobileMenu) {
+                    navToggle.addEventListener("click", function(e) {
+                        e.stopPropagation();
+                        if (mobileMenu.style.display === "block") {
+                            mobileMenu.style.display = "none";
+                        } else {
+                            mobileMenu.style.display = "block";
+                        }
+                    });
+                }
+
+                // 2. User Dropdown Toggle (Universal)
+                const userTriggers = document.querySelectorAll(".user-name-trigger");
+
+                userTriggers.forEach(trigger => {
+                    trigger.addEventListener("click", function(e) {
+                        e.stopPropagation();
+
+                        // Add 'active' class to trigger for styling
+                        this.classList.toggle("active");
+
+                        // Find the next sibling which is the dropdown content
+                        const dropdown = this.nextElementSibling;
+
+                        // Close other dropdowns first
+                        document.querySelectorAll(".user-dropdown-content").forEach(d => {
+                            if (d !== dropdown) d.classList.remove("show");
+                        });
+                        document.querySelectorAll(".user-name-trigger").forEach(t => {
+                            if (t !== this) t.classList.remove("active");
+                        });
+
+                        // Toggle current
+                        dropdown.classList.toggle("show");
+                    });
+                });
+
+                // 3. Close when clicking outside
+                window.addEventListener("click", function() {
+                    if (mobileMenu) mobileMenu.style.display = "none";
+
+                    document.querySelectorAll(".user-dropdown-content").forEach(d => {
+                        d.classList.remove("show");
+                    });
+                    document.querySelectorAll(".user-name-trigger").forEach(t => {
+                        t.classList.remove("active");
+                    });
+                });
+            });
+        </script>
+</body>
+
+</html>

@@ -11,9 +11,9 @@
 <body>
     <div class="main-content">
         <!-- NAVBAR SECTION -->
+        <!-- NAVBAR SECTION -->
         <nav class="navbar">
             <div class="nav-container">
-                <!-- logo area (image + text) -->
                 <div class="nav-logo">
                     <img src="img/logo.png" alt="Bin Sohail Logo" class="logo-img">
                     <div class="logo-text">
@@ -22,28 +22,43 @@
                     </div>
                 </div>
 
-                <!-- toggle for mobile -->
                 <div class="nav-toggle" id="navToggle" aria-label="menu">&#9776;</div>
 
-                <!-- desktop nav links -->
                 <ul class="nav-links" id="navMenu">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Home</a></li>
                     <li><a href="products.html">Products</a></li>
                     <li><a href="contact-us.html">Contact</a></li>
-                    <li><a href="signup.html">Signup</a></li>
-                    <li><a href="login.html">Login</a></li>
+                    <li><a href="chatbot.html">Chatbot</a></li>
+
+                    <li class="user-menu-container desktop-user-menu">
+                        <div class="user-name-trigger">
+                            John Doe <span class="arrow">▼</span>
+                        </div>
+                        <div class="user-dropdown-content">
+                            <a href="#">My Profile</a>
+                            <a href="#">Logout</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </nav>
 
-        <!-- Mobile-only menu (slides down) -->
-        <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Home</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="contact-us.html">Contact</a></li>
-                <li><a href="signup.html">Signup</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+
+                <li class="user-menu-container mobile-user-item">
+                    <div class="user-name-trigger">
+                        John Doe ▼
+                    </div>
+                    <div class="user-dropdown-content">
+                        <a href="#">My Profile</a>
+                        <a href="#">Logout</a>
+                    </div>
+                </li>
             </ul>
         </div>
 
@@ -161,7 +176,63 @@
     </footer>
 
     <!-- load JS -->
-    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            // 1. Mobile Menu Toggle
+            const navToggle = document.getElementById("navToggle");
+            const mobileMenu = document.getElementById("mobileMenu");
+
+            if (navToggle && mobileMenu) {
+                navToggle.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    if (mobileMenu.style.display === "block") {
+                        mobileMenu.style.display = "none";
+                    } else {
+                        mobileMenu.style.display = "block";
+                    }
+                });
+            }
+
+            // 2. User Dropdown Toggle (Universal)
+            const userTriggers = document.querySelectorAll(".user-name-trigger");
+
+            userTriggers.forEach(trigger => {
+                trigger.addEventListener("click", function(e) {
+                    e.stopPropagation();
+
+                    // Add 'active' class to trigger for styling
+                    this.classList.toggle("active");
+
+                    // Find the next sibling which is the dropdown content
+                    const dropdown = this.nextElementSibling;
+
+                    // Close other dropdowns first
+                    document.querySelectorAll(".user-dropdown-content").forEach(d => {
+                        if (d !== dropdown) d.classList.remove("show");
+                    });
+                    document.querySelectorAll(".user-name-trigger").forEach(t => {
+                        if (t !== this) t.classList.remove("active");
+                    });
+
+                    // Toggle current
+                    dropdown.classList.toggle("show");
+                });
+            });
+
+            // 3. Close when clicking outside
+            window.addEventListener("click", function() {
+                if (mobileMenu) mobileMenu.style.display = "none";
+
+                document.querySelectorAll(".user-dropdown-content").forEach(d => {
+                    d.classList.remove("show");
+                });
+                document.querySelectorAll(".user-name-trigger").forEach(t => {
+                    t.classList.remove("active");
+                });
+            });
+        })
+    </script>
 </body>
 
 </html>

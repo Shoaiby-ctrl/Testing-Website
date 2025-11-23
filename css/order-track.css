@@ -249,26 +249,6 @@ body {
 NAVBAR
 ========================== */
 
-.navbar {
-    width: 100%;
-    background: #008f4c;
-    color: #fff;
-    padding: 16px 24px;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    justify-content: space-between;
-}
-
 
 /* logo area */
 
@@ -289,32 +269,18 @@ NAVBAR
     font-size: 1.25rem;
     font-weight: 700;
     line-height: 1;
+    color: white;
 }
 
 .logo-text .sub {
     font-size: 0.85rem;
     text-transform: lowercase;
+    color: white;
     opacity: 0.9;
 }
 
 
 /* nav links (desktop) */
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 22px;
-    align-items: center;
-    margin-left: auto;
-}
-
-.nav-links li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 6px;
-    display: inline-block;
-}
 
 .nav-links li a:hover {
     color: black;
@@ -362,8 +328,8 @@ NAVBAR
 
 
 /* ==========================
-     PAGE HEADER
-  ========================== */
+ PAGE HEADER
+========================== */
 
 .page-header {
     width: 100%;
@@ -376,6 +342,387 @@ NAVBAR
     object-fit: cover;
     display: block;
     border-radius: 0;
+    margin-top: 30px;
+}
+
+.tracking-wrapper {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    gap: 30px;
+    /* Space between sidebar and content */
+    align-items: flex-start;
+    /* Aligns items to the top */
+}
+
+
+/* PROFILE SECTION */
+
+
+/* PROFILE SECTION */
+
+.profile-section {
+    padding: 40px 20px;
+    background: #f0f2f5;
+}
+
+.profile-wrapper {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    gap: 25px;
+}
+
+
+/* LEFT SIDEBAR */
+
+.profile-sidebar {
+    width: 250px;
+    /* Fixed width for desktop/laptop */
+    flex-shrink: 0;
+    /* Prevents sidebar from getting squashed */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Gap between buttons */
+}
+
+.side-btn {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    /* Rounded corners */
+    cursor: pointer;
+    transition: background 0.3s ease;
+    /* Default State (Dark Green - Inactive) */
+    background-color: #003d09;
+}
+
+.profile-sidebar .side-btn.active {
+    background: #007c16;
+}
+
+.profile-sidebar .logout {
+    background: #b70000;
+}
+
+
+/* =========================================
+   RESPONSIVE (Tablets & Mobile)
+   Matches 768px and below
+========================================= */
+
+
+/* =========================================
+   RESPONSIVE FIX (Mobile Side-by-Side)
+========================================= */
+
+
+/* =========================================
+   RESPONSIVE FIX (Tablet & Mobile)
+========================================= */
+
+
+/* =========================================
+   RESPONSIVE FIX (Final - Stops Cutting)
+========================================= */
+
+@media (max-width: 900px) {
+    /* 1. WRAPPER: Use 95% width to guarantee gaps on sides */
+    .tracking-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        /* Leaves 2.5% space on left and right */
+        margin: 20px auto;
+        /* Centers the container */
+        padding: 0;
+        /* Remove padding here, handled by width */
+    }
+    /* 2. SIDEBAR */
+    .profile-sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .side-btn {
+        text-align: center;
+        width: 100%;
+    }
+    /* 3. ORDER CARD: Reduce padding inside */
+    .order-details-container {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 15px;
+        /* Reduce padding to save space */
+        overflow: hidden;
+        /* Prevents internal elements from stretching it */
+    }
+    /* 4. ITEM LAYOUT: Perfect Side-by-Side */
+    .item {
+        display: flex;
+        flex-wrap: nowrap !important;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 0;
+        width: 100%;
+    }
+    .item img {
+        width: 50px;
+        height: 50px;
+        flex-shrink: 0;
+        border-radius: 6px;
+    }
+    .item-details {
+        flex-grow: 1;
+        min-width: 0;
+        /* Allows text to wrap */
+        padding-right: 5px;
+    }
+    .item-details h4 {
+        font-size: 13px;
+        margin-bottom: 2px;
+        line-height: 1.3;
+        white-space: normal;
+        word-wrap: break-word;
+    }
+    .item-details p {
+        font-size: 11px;
+    }
+    .price {
+        font-size: 14px;
+        font-weight: bold;
+        white-space: nowrap;
+        flex-shrink: 0;
+        color: #008f4c;
+    }
+    .remove-item {
+        font-size: 22px;
+        flex-shrink: 0;
+        margin-left: 0;
+        padding-left: 8px;
+    }
+}
+
+
+/* RIGHT CONTENT */
+
+
+/* 1. The White Card Container */
+
+.order-details-container {
+    flex-grow: 1;
+    background: #ffffff;
+    padding: 30px;
+    /* More breathing room */
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    /* Soft shadow */
+}
+
+
+/* 2. Header Section (Order #, Date, Status) */
+
+.order-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.order-header h2 {
+    font-size: 28px;
+    /* Bigger Title */
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.order-info p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   THE ITEMS (Big & Perfect)
+========================================= */
+
+
+/* 3. The Item Row */
+
+.item {
+    display: flex;
+    align-items: center;
+    /* Vertically center everything */
+    justify-content: space-between;
+    padding: 25px 0;
+    /* Space above and below each item */
+    border-bottom: 1px solid #eee;
+    /* Light divider line */
+}
+
+
+/* Remove border from the last item so it doesn't clash with Total */
+
+.item:last-of-type {
+    border-bottom: none;
+}
+
+
+/* 4. The Product Image - BIGGER */
+
+.item img {
+    width: 100px;
+    /* Much larger size */
+    height: 100px;
+    object-fit: contain;
+    /* Ensures the medicine box isn't cut off */
+    background: #f9f9f9;
+    /* Light grey background for the image box */
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 5px;
+    /* Slight internal padding */
+    margin-right: 25px;
+    /* Space between image and text */
+}
+
+
+/* ==========================
+   CANCEL / REMOVE BUTTONS
+========================== */
+
+
+/* The 'X' Button next to items */
+
+.remove-item {
+    background: transparent;
+    border: none;
+    color: #ff4d4d;
+    /* Bright Red */
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    margin-left: 20px;
+    /* Space between Price and X */
+    padding: 0 5px;
+    transition: transform 0.2s ease, color 0.2s;
+}
+
+.remove-item:hover {
+    color: #d90000;
+    /* Darker Red on hover */
+    transform: scale(1.2);
+    /* Grows slightly */
+}
+
+
+/* The 'Cancel Entire Order' Button */
+
+.cancel-order-btn {
+    margin-top: 20px;
+    background-color: #fff;
+    color: #d90000;
+    border: 2px solid #d90000;
+    padding: 12px 25px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.cancel-order-btn:hover {
+    background-color: #d90000;
+    color: #fff;
+}
+
+
+/* 5. Item Name & Qty Text */
+
+.item-details {
+    flex-grow: 1;
+    /* Takes up middle space */
+}
+
+.item-details h4 {
+    font-size: 20px;
+    /* Bigger Product Name */
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.item-details p {
+    font-size: 15px;
+    color: #777;
+    margin: 0;
+}
+
+
+/* 6. Price Tag */
+
+.price {
+    font-size: 22px;
+    /* Large Price */
+    font-weight: bold;
+    color: #008f4c;
+    /* Your Brand Green */
+    white-space: nowrap;
+    /* Keeps "Rs 300" on one line */
+}
+
+
+/* 7. Total Section at bottom */
+
+.total-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+    text-align: right;
+    font-size: 24px;
+    color: #222;
+}
+
+@media (max-width: 600px) {
+    .item {
+        flex-wrap: wrap;
+        /* Allow items to stack on very small screens */
+    }
+    .item img {
+        width: 80px;
+        height: 80px;
+        margin-right: 15px;
+    }
+    .item-details h4 {
+        font-size: 16px;
+    }
+    .price {
+        font-size: 18px;
+    }
+}
+
+
+/* MY ORDERS SECTION */
+
+@media (max-width: 768px) {
+    .profile-wrapper {
+        flex-direction: column;
+    }
+    .profile-sidebar {
+        width: 100%;
+    }
+    .profile-sidebar .side-btn {
+        text-align: center;
+    }
 }
 
 
@@ -395,251 +742,6 @@ NAVBAR
 }
 
 
-/* Chatbot */
-
-
-/* Chatbot Hero Section */
-
-.chatbot-hero {
-    width: 100%;
-    padding: 60px 8%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(to right, #e8f7ef, #ffffff);
-    min-height: 65vh;
-}
-
-.hero-left {
-    width: 50%;
-}
-
-.chatbot-hero h1 {
-    font-size: 42px;
-    font-weight: 800;
-    color: #056839;
-}
-
-.subtitle {
-    margin-top: 5px;
-    font-size: 20px;
-    color: #444;
-    font-weight: 600;
-}
-
-.typing-text {
-    margin-top: 20px;
-    font-size: 22px;
-    color: #0b7a47;
-    font-weight: bold;
-    height: 30px;
-}
-
-.help-list {
-    margin-top: 20px;
-    font-size: 18px;
-    color: #333;
-    line-height: 32px;
-}
-
-.hero-right img {
-    width: 420px;
-    filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.2));
-}
-
-
-/* Chat Popup */
-
-.chatbot-welcome {
-    position: fixed;
-    bottom: 110px;
-    right: 110px;
-    background: white;
-    padding: 14px 18px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    font-size: 16px;
-    display: none;
-}
-
-
-/* Chat Button Glow */
-
-.chatbot-btn {
-    box-shadow: 0 0 18px rgba(0, 150, 255, 0.8);
-    animation: pulseGlow 1.5s infinite;
-}
-
-@keyframes pulseGlow {
-    0% {
-        box-shadow: 0 0 10px rgba(0, 150, 255, 0.4);
-    }
-    50% {
-        box-shadow: 0 0 20px rgba(0, 150, 255, 1);
-    }
-    100% {
-        box-shadow: 0 0 10px rgba(0, 150, 255, 0.4);
-    }
-}
-
-
-/* Responsive */
-
-@media (max-width: 900px) {
-    .chatbot-hero {
-        flex-direction: column;
-        text-align: center;
-        padding: 40px 5%;
-    }
-    .hero-left,
-    .hero-right {
-        width: 100%;
-    }
-    .hero-right img {
-        width: 300px;
-        margin-top: 30px;
-    }
-}
-
-
-/* CHATBOT WIDGET */
-
-.chatbot-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 2000;
-}
-
-
-/* Floating Chat Icon */
-
-.chatbot-btn {
-    width: 60px;
-    height: 60px;
-    background: #0D6EFD;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    font-size: 28px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-}
-
-.chatbot-btn:hover {
-    transform: scale(1.1);
-}
-
-
-/* Chat Window */
-
-.chatbot-box {
-    width: 340px;
-    height: 420px;
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-
-/* Header */
-
-.chatbot-header {
-    background: #0D6EFD;
-    color: white;
-    padding: 12px 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.chatbot-header button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 22px;
-    cursor: pointer;
-}
-
-
-/* Messages body */
-
-.chatbot-body {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
-    background: #f8f9fc;
-}
-
-.bot-msg,
-.user-msg {
-    margin-bottom: 10px;
-    padding: 10px 14px;
-    max-width: 80%;
-    border-radius: 12px;
-    line-height: 1.4;
-    font-size: 14px;
-}
-
-.bot-msg {
-    background: #e3eeff;
-    color: #003d99;
-}
-
-.user-msg {
-    background: #0D6EFD;
-    color: white;
-    margin-left: auto;
-}
-
-
-/* Input */
-
-.chatbot-input-area {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-}
-
-#chatInput {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #bbb;
-    border-radius: 8px;
-}
-
-#sendBtn {
-    background: #0D6EFD;
-    width: 45px;
-    border: none;
-    margin-left: 8px;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: 0.2s;
-}
-
-#sendBtn:hover {
-    opacity: 0.9;
-}
-
-
-/* Mobile Fix */
-
-@media (max-width: 420px) {
-    .chatbot-box {
-        width: 90vw;
-        height: 70vh;
-        right: 5vw;
-    }
-}
-
-
 /* footer */
 
 .footer {
@@ -652,8 +754,8 @@ NAVBAR
 
 
 /* ==========================
-     RESPONSIVENESS
-  ========================== */
+ RESPONSIVENESS
+========================== */
 
 @media (max-width: 768px) {
     .page-header {
@@ -700,83 +802,10 @@ NAVBAR
     .logo-text .sub {
         font-size: 0.78rem;
     }
-    .slide-caption {
-        padding: 8px 10px;
-        max-width: 92%;
-    }
-    .slide-caption h2 {
-        font-size: 1.45rem;
-    }
-    .slide-caption p {
-        font-size: 0.95rem;
-    }
-    .slider-inner {
-        height: 52vh;
-        min-height: 240px;
-    }
-    .slide img {
-        height: 52vh;
-        object-fit: cover;
-    }
 }
-
-
-/* ==========================
-   PAGINATION
-========================== */
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px 0 60px 0;
-    gap: 8px;
-}
-
-.page-btn {
-    padding: 10px 16px;
-    background: #ffffff;
-    border: 1px solid #dcdcdc;
-    color: #333;
-    font-size: 15px;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.page-btn:hover {
-    background: #4caf50;
-    color: white;
-    border-color: #4caf50;
-}
-
-.page-btn.active {
-    background: #4caf50;
-    color: white;
-    border-color: #4caf50;
-}
-
-
-/* Mobile Adjustments */
-
-@media (max-width: 400px) {
-    .page-btn {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
-}
-
-
-/* small screens */
 
 @media (max-width: 420px) {
     .logo-img {
         height: 40px;
-    }
-    .slide-caption h2 {
-        font-size: 1.2rem;
-    }
-    .slide-caption p {
-        font-size: 0.9rem;
     }
 }
